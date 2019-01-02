@@ -1,38 +1,47 @@
 #ifndef LINKEDLIST_HPP_INCLUDED
 #define LINKEDLIST_HPP_INCLUDED
 #include <iostream>
+using namespace std;
 
 template <class T>
 class LinkedList {
     public:
-        LinkedList ();
+        LinkedList();
+        void insert(T newData);
+        void printList();
+        ~LinkedList();
 
+    private:
         class Node {
             public:
                 Node ();
                 Node (Node* newPrev, Node* newNext, T newData);
+                Node(T newData);
+
                 // Setters
                 void setData (T inputData);
                 void setNext (Node* newNext);
                 void setPrev (Node* newPrev);
+
                 // Getters
-                const T getData () const;
-                const Node* getNext() const;
-                const Node* getPrev () const;
+                const T getData ();
+                Node* getNext();
+                Node* getPrev ();
+
                 // Destructor
                 ~Node ();
 
-            private:
                 Node *next, *prev;
                 T data;
+
+            private:
+
         };
 
         Node* head;
+        Node* tail;
 
-        ~LinkedList();
-
-    private:
-
+        const bool isEmpty() const;
 };
 
 #include "LinkedList.inl"

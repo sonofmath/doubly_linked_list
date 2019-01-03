@@ -2,7 +2,7 @@
 
 **Node**
 <br>
-<img src="/CreateNode.png">
+<img src="/Node.png">
 
 **Create**
 <br>

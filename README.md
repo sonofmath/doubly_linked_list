@@ -4,7 +4,7 @@
 <br>
 <img src="/Node.png">
 
-**Create**
+**Insert**
 <br>
 <img src="/CreateNode.png">
 <br>

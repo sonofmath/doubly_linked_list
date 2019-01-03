@@ -1,10 +1,10 @@
 # Doubly Linked List
 
-**Node**
+### Node
 <br>
 <img src="/Node.png">
 
-**Insert**
+### Insert
 <br>
 <img src="/CreateNode.png">
 <br>

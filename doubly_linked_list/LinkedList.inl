@@ -113,9 +113,9 @@ const bool LinkedList<T>::isEmpty() const{
         return false;
 }
 
-
+//Adds a new element at the end of the list container, after its current last element
 template <class T>
-void LinkedList<T>::insert(T newData){
+void LinkedList<T>::push_back(T newData){
     Node *newNode = new Node(newData);
 
     if(isEmpty()){
@@ -142,6 +142,35 @@ void LinkedList<T>::insert(T newData){
     }
 }
 
+//Inserts a new element at the beginning of the list, right before its current first element.
+template <class T>
+void LinkedList<T>::push_front(T newData){
+    Node *newNode = new Node(newData);
+
+    if(isEmpty()){
+        //Attach the head and tail to new node
+        head->setNext(newNode);
+        tail->setPrev(newNode);
+
+        //Attach the new node to head and tail
+        newNode->setPrev(head);
+        newNode->setNext(tail);
+    }
+    else{
+        //Set new Node's prev ptr to head
+        newNode->setPrev(head);
+       
+        //Set new Node'a next to node that was after head
+        newNode->setNext(head->getNext());
+
+        //Set head's next ptr to the new node
+        newNode->getPrev()->setNext(newNode);
+
+        //Set the prev value in node that use to be after head to new node
+        newNode->getNext()->setPrev(newNode);   
+    }
+}
+
 /*We assume that every object has << overloaded (use caution).
 Used for testing... I want to write a real iterator instead.
 */
@@ -160,7 +189,6 @@ void LinkedList<T>::printList(){
     else
         cout<<"The list is empty!\n";
 }
-
 
 template <class T>
 LinkedList<T>::~LinkedList() {

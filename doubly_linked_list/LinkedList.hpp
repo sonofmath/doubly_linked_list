@@ -5,35 +5,46 @@ using namespace std;
 
 template <class T>
 class LinkedList {
-    public:
-        LinkedList();
-        void insert(T newData);
-        void printList();
-        ~LinkedList();
 
+    public:
+        //Constructor:
+        LinkedList();
+
+        //Modifiers:
+        void push_back(T newData);
+        void push_front(T newData);
+        void printList();
+
+        //Element access:
         T front();
         T back();
+
+        //Capacity:
         const int size() const;
         const bool empty() const;
+
+        //Destructor:
+        ~LinkedList();
 
     private:
         class Node {
             public:
+                //Constructors:
                 Node ();
                 Node (Node* newPrev, Node* newNext, T newData);
                 Node(T newData);
 
-                // Setters
+                //Setters:
                 void setData (T inputData);
                 void setNext (Node* newNext);
                 void setPrev (Node* newPrev);
 
-                // Getters
+                //Getters
                 const T getData ();
                 Node* getNext();
                 Node* getPrev ();
 
-                // Destructor
+                //Destructor:
                 ~Node ();
 
                 Node *next, *prev;

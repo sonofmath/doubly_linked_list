@@ -217,9 +217,23 @@ void LinkedList<T>::printList(){
         cout<<"The list is empty!\n";
 }
 
+//Destructor
 template <class T>
 LinkedList<T>::~LinkedList() {
-    if(head != nullptr) {
+    //If list is empty
+    if(isEmpty()){
         delete head;
+        delete tail;
+    }
+    //If not empty
+    else{
+        Node *previous = head;
+        Node *current = head->getNext();
+        while(current != tail){
+            delete previous;
+            previous = current;
+            current = current->getNext();
+        }
+        delete tail;
     }
 }

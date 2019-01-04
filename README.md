@@ -1,7 +1,7 @@
 # Doubly Linked List
 
-### Node
-<img src="/Node.png">
+### Node & Create
+<img src="/Create.png">
 
 ### Insert
 <img src="/CreateNode.png">

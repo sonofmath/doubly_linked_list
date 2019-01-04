@@ -15,6 +15,7 @@ class LinkedList {
         void push_front(T newData);
         void printList();
         void pop_front();
+        void clear();
 
         //Element access:
         T front();

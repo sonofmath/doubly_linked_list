@@ -45,6 +45,27 @@ const int LinkedList<T>::size() const{
     return counter;
 }
 
+/*
+Removes all elements from the list container (which are destroyed),
+ and leaving the container with a size of 0.
+*/
+template <class T>
+void LinkedList<T>::clear(){
+    //If list is not empty
+    if(!isEmpty()){
+        Node *current = head->getNext();
+        Node *previous;
+        while(current != tail){
+           previous = current;
+           current = current->getNext();
+           delete previous;
+        }
+        //Now we need to attach the head and tails pointers
+        head->setNext(tail);
+        tail->setPrev(head);
+    }
+}
+
 //Returns whether the list is empty(1) or not(0).
 template <class T>
 const bool LinkedList<T>::empty() const{
@@ -199,7 +220,7 @@ void LinkedList<T>::pop_front(){
 }
 
 /*We assume that every object has << overloaded (use caution).
-Used for testing... I want to write a real iterator instead.
+Used for testing... I want to write a real iterator instead. 
 */
 template <class T>
 void LinkedList<T>::printList(){
@@ -213,8 +234,11 @@ void LinkedList<T>::printList(){
             current = current->getNext();
         }
     }
-    else
+    else{
+        cout<<endl;
         cout<<"The list is empty!\n";
+    }
+        
 }
 
 //Destructor

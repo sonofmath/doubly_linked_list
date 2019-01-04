@@ -159,7 +159,7 @@ void LinkedList<T>::push_front(T newData){
     else{
         //Set new Node's prev ptr to head
         newNode->setPrev(head);
-       
+
         //Set new Node'a next to node that was after head
         newNode->setNext(head->getNext());
 
@@ -167,7 +167,34 @@ void LinkedList<T>::push_front(T newData){
         newNode->getPrev()->setNext(newNode);
 
         //Set the prev value in node that use to be after head to new node
-        newNode->getNext()->setPrev(newNode);   
+        newNode->getNext()->setPrev(newNode);
+    }
+}
+
+//Removes the first element in the list container, effectively reducing its size by one.
+template <class T>
+void LinkedList<T>::pop_front(){
+    if(!isEmpty()){
+        //Node we want to delete
+        Node *delNode = head->getNext();
+
+        //The node that will now be first in list
+        Node *firstNode = delNode->getNext();
+
+        //Set head's next ptr to firstNode
+        head->setNext(firstNode);
+
+        //Set prev ptr in firstNode to head
+        firstNode->setPrev(head);
+
+        //Set firstNode's next ptr to actual 2nd node
+        firstNode->setNext(delNode->getNext()->getNext());
+
+        //Set the prev ptr in the 2nd node to point to firstNode
+        firstNode->getNext()->setPrev(firstNode);
+
+        //Delete delNode
+        delete delNode;
     }
 }
 

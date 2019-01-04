@@ -14,6 +14,7 @@ class LinkedList {
         void push_back(T newData);
         void push_front(T newData);
         void printList();
+        void pop_front();
 
         //Element access:
         T front();
@@ -30,8 +31,8 @@ class LinkedList {
         class Node {
             public:
                 //Constructors:
-                Node ();
-                Node (Node* newPrev, Node* newNext, T newData);
+                Node();
+                Node(Node* newPrev, Node* newNext, T newData);
                 Node(T newData);
 
                 //Setters:
@@ -40,12 +41,12 @@ class LinkedList {
                 void setPrev (Node* newPrev);
 
                 //Getters
-                const T getData ();
+                const T getData();
                 Node* getNext();
-                Node* getPrev ();
+                Node* getPrev();
 
                 //Destructor:
-                ~Node ();
+                ~Node();
 
                 Node *next, *prev;
                 T data;

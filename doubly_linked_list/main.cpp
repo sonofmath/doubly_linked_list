@@ -30,7 +30,9 @@ bool testInt(int num){
     list.push_front(-404);
     cout<<"Front: " <<list.front() <<endl;
     cout<<"Back: " <<list.back() <<endl;
-    cout<<"Number of elements in list: " <<list.size();
+    cout<<"Popping front...\n";
+    list.pop_front();
+    cout<<"Number of elements now in list: " <<list.size();
     list.printList();
     cout<<"**************************************************************\n";
     return test;
@@ -51,6 +53,8 @@ bool testDouble(double num){
     list.push_front(-404.4);
     cout<<"Front: " <<list.front() <<endl;
     cout<<"Back: " <<list.back() <<endl;
+    cout<<"Popping front...\n";
+    list.pop_front();
     cout<<"Number of elements in list: " <<list.size();
     list.printList();
     cout<<"**************************************************************\n";
@@ -73,6 +77,8 @@ bool testString(string str){
     list.push_front("I should be 1st now!");
     cout<<"Front: " <<list.front() <<endl;
     cout<<"Back: " <<list.back() <<endl;
+    cout<<"Popping front...\n";
+    list.pop_front();
     cout<<"Number of elements in list: " <<list.size();
     list.printList();
     cout<<"**************************************************************\n";

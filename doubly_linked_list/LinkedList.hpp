@@ -13,6 +13,7 @@ class LinkedList {
 
         T front();
         T back();
+        const int size() const;
 
     private:
         class Node {

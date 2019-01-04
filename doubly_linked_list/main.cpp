@@ -28,6 +28,7 @@ bool testInt(int num){
     list.insert(10);
     cout<<"Front: " <<list.front() <<endl;
     cout<<"Back: " <<list.back() <<endl;
+    cout<<"Number of elements in list: " <<list.size();
     list.printList();
     cout<<"**************************************************************\n";
     return test;
@@ -46,6 +47,7 @@ bool testDouble(double num){
     list.insert(10.34);
     cout<<"Front: " <<list.front() <<endl;
     cout<<"Back: " <<list.back() <<endl;
+    cout<<"Number of elements in list: " <<list.size();
     list.printList();
     cout<<"**************************************************************\n";
     return test;
@@ -65,6 +67,7 @@ bool testString(string str){
     list.insert("Bye!");
     cout<<"Front: " <<list.front() <<endl;
     cout<<"Back: " <<list.back() <<endl;
+    cout<<"Number of elements in list: " <<list.size();
     list.printList();
     cout<<"**************************************************************\n";
     return test;

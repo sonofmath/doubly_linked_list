@@ -31,6 +31,21 @@ T LinkedList<T>::back(){
         return T{};
 }
 
+//Returns the number of elements in the list.
+template <class T>
+const int LinkedList<T>::size() const{
+    Node *current = head->getNext();
+    int counter = 0;
+    if(!isEmpty()){
+        while(current != tail){
+            counter++;
+            cout<<"Node " <<counter <<" = " <<current->getData() <<endl;
+            current = current->getNext();
+        }
+    }
+    return counter;
+}
+
 template <class T>
 void LinkedList<T>::Node::setNext(Node* newNext){
     next = newNext;

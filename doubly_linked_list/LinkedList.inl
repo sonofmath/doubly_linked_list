@@ -39,11 +39,16 @@ const int LinkedList<T>::size() const{
     if(!isEmpty()){
         while(current != tail){
             counter++;
-            cout<<"Node " <<counter <<" = " <<current->getData() <<endl;
             current = current->getNext();
         }
     }
     return counter;
+}
+
+//Returns whether the list is empty(1) or not(0).
+template <class T>
+const bool LinkedList<T>::empty() const{
+    return isEmpty();
 }
 
 template <class T>
@@ -151,7 +156,6 @@ void LinkedList<T>::printList(){
             cout<<"Node " <<counter <<" = " <<current->getData() <<endl;
             current = current->getNext();
         }
-        cout<<endl;
     }
     else
         cout<<"The list is empty!\n";

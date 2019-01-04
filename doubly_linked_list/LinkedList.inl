@@ -13,6 +13,24 @@ LinkedList<T>::Node::Node() {
     data = NULL;
 }
 
+//Returns the value of the first element in the list.
+template <class T>
+T LinkedList<T>::front(){
+    if(!isEmpty())
+        return head->getNext()->getData();
+    else
+        return T{};
+}
+
+//Returns the value of the last element in the list.
+template <class T>
+T LinkedList<T>::back(){
+    if(!isEmpty())
+        return tail->getPrev()->getData();
+    else
+        return T{};
+}
+
 template <class T>
 void LinkedList<T>::Node::setNext(Node* newNext){
     next = newNext;
@@ -109,14 +127,14 @@ Used for testing... I want to write a real iterator instead.
 */
 template <class T>
 void LinkedList<T>::printList(){
-    Node *current = head;
+    Node *current = head->getNext();
     int counter = 0;
     if(!isEmpty()){
         cout<<endl;
         while(current != tail){
             counter++;
-            current = current->getNext();
             cout<<"Node " <<counter <<" = " <<current->getData() <<endl;
+            current = current->getNext();
         }
         cout<<endl;
     }

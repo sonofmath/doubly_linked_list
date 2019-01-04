@@ -6,7 +6,6 @@ bool testInt(int num);
 bool testDouble(double num);
 bool testString(string str);
 
-
 int main()
 {
     cout<<testInt(5) <<endl;
@@ -16,6 +15,8 @@ int main()
 }
 
 bool testInt(int num){
+    cout<<"**************************************************************\n";
+    cout<<"Testing with int type: \n";
     bool test = false;
 
     LinkedList<int> list;
@@ -25,11 +26,16 @@ bool testInt(int num){
     list.insert(-20);
     list.insert(4);
     list.insert(10);
+    cout<<"Front: " <<list.front() <<endl;
+    cout<<"Back: " <<list.back() <<endl;
     list.printList();
+    cout<<"**************************************************************\n";
     return test;
 }
 
 bool testDouble(double num){
+    cout<<"**************************************************************\n";
+    cout<<"Testing with double type: \n";
     bool test = false;
 
     LinkedList<double> list;
@@ -38,11 +44,16 @@ bool testDouble(double num){
     list.insert(-20.1212);
     list.insert(4.0);
     list.insert(10.34);
+    cout<<"Front: " <<list.front() <<endl;
+    cout<<"Back: " <<list.back() <<endl;
     list.printList();
+    cout<<"**************************************************************\n";
     return test;
 }
 
 bool testString(string str){
+    cout<<"**************************************************************\n";
+    cout<<"Testing with string type: \n";
     bool test = false;
 
     LinkedList<string> list;
@@ -51,6 +62,10 @@ bool testString(string str){
     list.insert("JR");
     list.insert("I love C++");
     list.insert("HELLO");
+    list.insert("Bye!");
+    cout<<"Front: " <<list.front() <<endl;
+    cout<<"Back: " <<list.back() <<endl;
     list.printList();
+    cout<<"**************************************************************\n";
     return test;
 }

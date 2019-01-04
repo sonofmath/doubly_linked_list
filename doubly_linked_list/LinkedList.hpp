@@ -11,6 +11,9 @@ class LinkedList {
         void printList();
         ~LinkedList();
 
+        T front();
+        T back();
+
     private:
         class Node {
             public:

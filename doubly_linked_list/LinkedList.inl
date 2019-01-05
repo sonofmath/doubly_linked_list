@@ -13,6 +13,65 @@ LinkedList<T>::Node::Node() {
     data = NULL;
 }
 
+//Returns the value of the first element in the list.
+template <class T>
+T LinkedList<T>::front(){
+    if(!isEmpty())
+        return head->getNext()->getData();
+    else
+        return T{};
+}
+
+//Returns the value of the last element in the list.
+template <class T>
+T LinkedList<T>::back(){
+    if(!isEmpty())
+        return tail->getPrev()->getData();
+    else
+        return T{};
+}
+
+//Returns the number of elements in the list.
+template <class T>
+const int LinkedList<T>::size() const{
+    Node *current = head->getNext();
+    int counter = 0;
+    if(!isEmpty()){
+        while(current != tail){
+            counter++;
+            current = current->getNext();
+        }
+    }
+    return counter;
+}
+
+/*
+Removes all elements from the list container (which are destroyed),
+ and leaving the container with a size of 0.
+*/
+template <class T>
+void LinkedList<T>::clear(){
+    //If list is not empty
+    if(!isEmpty()){
+        Node *current = head->getNext();
+        Node *previous;
+        while(current != tail){
+           previous = current;
+           current = current->getNext();
+           delete previous;
+        }
+        //Now we need to attach the head and tails pointers
+        head->setNext(tail);
+        tail->setPrev(head);
+    }
+}
+
+//Returns whether the list is empty(1) or not(0).
+template <class T>
+const bool LinkedList<T>::empty() const{
+    return isEmpty();
+}
+
 template <class T>
 void LinkedList<T>::Node::setNext(Node* newNext){
     next = newNext;
@@ -75,9 +134,9 @@ const bool LinkedList<T>::isEmpty() const{
         return false;
 }
 
-
+//Adds a new element at the end of the list container, after its current last element
 template <class T>
-void LinkedList<T>::insert(T newData){
+void LinkedList<T>::push_back(T newData){
     Node *newNode = new Node(newData);
 
     if(isEmpty()){
@@ -104,30 +163,101 @@ void LinkedList<T>::insert(T newData){
     }
 }
 
+//Inserts a new element at the beginning of the list, right before its current first element.
+template <class T>
+void LinkedList<T>::push_front(T newData){
+    Node *newNode = new Node(newData);
+
+    if(isEmpty()){
+        //Attach the head and tail to new node
+        head->setNext(newNode);
+        tail->setPrev(newNode);
+
+        //Attach the new node to head and tail
+        newNode->setPrev(head);
+        newNode->setNext(tail);
+    }
+    else{
+        //Set new Node's prev ptr to head
+        newNode->setPrev(head);
+
+        //Set new Node'a next to node that was after head
+        newNode->setNext(head->getNext());
+
+        //Set head's next ptr to the new node
+        newNode->getPrev()->setNext(newNode);
+
+        //Set the prev value in node that use to be after head to new node
+        newNode->getNext()->setPrev(newNode);
+    }
+}
+
+//Removes the first element in the list container, effectively reducing its size by one.
+template <class T>
+void LinkedList<T>::pop_front(){
+    if(!isEmpty()){
+        //Node we want to delete
+        Node *delNode = head->getNext();
+
+        //The node that will now be first in list
+        Node *firstNode = delNode->getNext();
+
+        //Set head's next ptr to firstNode
+        head->setNext(firstNode);
+
+        //Set prev ptr in firstNode to head
+        firstNode->setPrev(head);
+
+        //Set firstNode's next ptr to actual 2nd node
+        firstNode->setNext(delNode->getNext()->getNext());
+
+        //Set the prev ptr in the 2nd node to point to firstNode
+        firstNode->getNext()->setPrev(firstNode);
+
+        //Delete delNode
+        delete delNode;
+    }
+}
+
 /*We assume that every object has << overloaded (use caution).
-Used for testing... I want to write a real iterator instead.
+Used for testing... I want to write a real iterator instead. 
 */
 template <class T>
 void LinkedList<T>::printList(){
-    Node *current = head;
+    Node *current = head->getNext();
     int counter = 0;
     if(!isEmpty()){
         cout<<endl;
         while(current != tail){
             counter++;
-            current = current->getNext();
             cout<<"Node " <<counter <<" = " <<current->getData() <<endl;
+            current = current->getNext();
         }
-        cout<<endl;
     }
-    else
+    else{
+        cout<<endl;
         cout<<"The list is empty!\n";
+    }
+        
 }
 
-
+//Destructor
 template <class T>
 LinkedList<T>::~LinkedList() {
-    if(head != nullptr) {
+    //If list is empty
+    if(isEmpty()){
         delete head;
+        delete tail;
+    }
+    //If not empty
+    else{
+        Node *previous = head;
+        Node *current = head->getNext();
+        while(current != tail){
+            delete previous;
+            previous = current;
+            current = current->getNext();
+        }
+        delete tail;
     }
 }

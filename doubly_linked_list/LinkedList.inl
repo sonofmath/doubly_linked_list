@@ -219,8 +219,28 @@ void LinkedList<T>::pop_front(){
     }
 }
 
+template <class T>
+void LinkedList<T>::pop_back(){
+    if(!isEmpty()){
+        //Node we want to delete
+        Node *delNode = tail->getPrev();
+
+        //Node that will be last in the list
+        Node *lastNode = delNode->getPrev();
+
+        //Set tail's prev ptr to lastNode
+        tail->setPrev(lastNode);
+
+        //Set next ptr in lastNode to tail
+        lastNode->setNext(tail);
+
+        //Delete the last node
+        delete delNode;
+    }
+}
+
 /*We assume that every object has << overloaded (use caution).
-Used for testing... I want to write a real iterator instead. 
+Used for testing... I want to write a real iterator instead.
 */
 template <class T>
 void LinkedList<T>::printList(){
@@ -238,7 +258,7 @@ void LinkedList<T>::printList(){
         cout<<endl;
         cout<<"The list is empty!\n";
     }
-        
+
 }
 
 //Destructor

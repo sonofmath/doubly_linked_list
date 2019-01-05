@@ -33,6 +33,13 @@ bool testInt(int num){
     cout<<"Popping front...\n";
     list.pop_front();
     cout<<"Number of elements now in list: " <<list.size();
+
+    list.printList();
+
+    cout<<"Popping back...\n";
+    list.pop_back();
+    cout<<"Number of elements now in list: " <<list.size();
+
     list.printList();
 
     cout<<"Clearing the list...\n";
@@ -68,6 +75,11 @@ bool testDouble(double num){
     cout<<"Number of elements in list: " <<list.size();
     list.printList();
 
+    cout<<"Popping back...\n";
+    list.pop_back();
+    cout<<"Number of elements in list: " <<list.size();
+    list.printList();
+
     cout<<"Clearing the list...\n";
     list.clear();
     list.printList();
@@ -97,6 +109,11 @@ bool testString(string str){
     cout<<"Back: " <<list.back() <<endl;
     cout<<"Popping front...\n";
     list.pop_front();
+    cout<<"Number of elements in list: " <<list.size();
+    list.printList();
+
+    cout<<"Popping back...\n";
+    list.pop_back();
     cout<<"Number of elements in list: " <<list.size();
     list.printList();
 

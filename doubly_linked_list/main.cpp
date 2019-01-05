@@ -46,9 +46,10 @@ bool testString(string str){
     bool test = false;
 
     LinkedList<string> list;
-    list.insert(str);
+
     list.insert("Ray");
     list.insert("JR");
+    list.insert(str);
     list.insert("I love C++");
     list.insert("HELLO");
     list.printList();

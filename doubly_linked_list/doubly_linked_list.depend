@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1545507081 source:c:\users\sonof\projects\doubly_linked_list\doubly_linked_list\main.cpp
+1546573817 source:c:\users\sonof\projects\doubly_linked_list\doubly_linked_list\main.cpp
 	<iostream>
 	"LinkedList.hpp"
 
-1545507140 c:\users\sonof\projects\doubly_linked_list\doubly_linked_list\linkedlist.hpp
+1546573817 c:\users\sonof\projects\doubly_linked_list\doubly_linked_list\linkedlist.hpp
 	<iostream>
 	"LinkedList.inl"
 
-1545507452 c:\users\sonof\projects\doubly_linked_list\doubly_linked_list\linkedlist.inl
+1546573817 c:\users\sonof\projects\doubly_linked_list\doubly_linked_list\linkedlist.inl
 

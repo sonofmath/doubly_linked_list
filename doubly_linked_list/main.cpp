@@ -47,10 +47,27 @@ bool testInt(int num){
     list.printList();
 
     cout<<"Adding after doing clear(): \n";
-    list.push_front(200);
-    list.push_front(22);
-    list.push_front(991);
-    list.printList();
+    list.push_back(1);
+    list.push_back(2);
+    list.push_back(3);
+    list.push_back(4);
+    list.push_back(5);
+    list.push_back(6);
+    list.push_back(7);
+    list.push_back(8);
+    list.push_back(9);
+    list.push_back(10);
+
+    //Testing iterator
+    cout<<"Printing list using iterator: \n";
+    int counter = 1;
+    for(auto it = list.begin(); it != list.end(); ++it)
+    {
+        cout<<"Node " <<counter <<" = " <<*it <<endl;
+        counter++;
+    }
+
+
     cout<<"**************************************************************\n";
     return test;
 }
@@ -85,8 +102,25 @@ bool testDouble(double num){
     list.printList();
 
     cout<<"Adding after doing clear(): \n";
-    list.push_front(200.99);
-    list.printList();
+    list.push_back(1.1);
+    list.push_back(2.2);
+    list.push_back(3.3);
+    list.push_back(4.4);
+    list.push_back(5.5);
+    list.push_back(6.6);
+    list.push_back(7.7);
+    list.push_back(8.8);
+    list.push_back(9.9);
+    list.push_back(10.10);
+
+    //Testing iterator
+    cout<<"Printing list using iterator: \n";
+    int counter = 1;
+    for(auto it = list.begin(); it != list.end(); ++it)
+    {
+        cout<<"Node " <<counter <<" = " <<*it <<endl;
+        counter++;
+    }
     cout<<"**************************************************************\n";
     return test;
 }
@@ -122,8 +156,25 @@ bool testString(string str){
     list.printList();
 
      cout<<"Adding after doing clear(): \n";
-    list.push_front("I'm the only one!");
-    list.printList();
+    list.push_back("Alpha");
+    list.push_back("Beta");
+    list.push_back("Gamma");
+    list.push_back("Delta");
+    list.push_back("Epsilon");
+    list.push_back("Zeta");
+    list.push_back("Eta");
+    list.push_back("Theta");
+    list.push_back("Iota");
+    list.push_back("Kappa");
+
+    //Testing iterator
+    cout<<"Printing list using iterator: \n";
+    int counter = 1;
+    for(auto it = list.begin(); it != list.end(); ++it)
+    {
+        cout<<"Node " <<counter <<" = " <<*it <<endl;
+        counter++;
+    }
     cout<<"**************************************************************\n";
     return test;
 }

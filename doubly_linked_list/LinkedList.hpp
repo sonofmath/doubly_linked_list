@@ -29,6 +29,23 @@ class LinkedList {
         //Destructor:
         ~LinkedList();
 
+        // Declaration of the iterator class for this list
+		class iterator
+		{
+			public:
+				iterator(typename LinkedList<T>::Node *s);
+				iterator& operator++();
+				const T operator*();
+				const bool operator ==(const iterator& r);
+				const bool operator !=(const iterator& r);
+
+			private:
+				typename LinkedList<T>::Node *curr;
+		};
+
+        iterator begin();
+		iterator end();
+
     private:
         class Node {
             public:
@@ -63,6 +80,11 @@ class LinkedList {
         const bool isEmpty() const;
 };
 
+/* For separate header and source file source code
+	Template classes & functions declarations and implementations
+	should be in the "same file". BST.inl allows us to separate
+	these two.
+	*/
 #include "LinkedList.inl"
 
 #endif // LINKEDLIST_HPP_INCLUDED

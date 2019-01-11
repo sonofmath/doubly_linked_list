@@ -281,3 +281,61 @@ LinkedList<T>::~LinkedList() {
         delete tail;
     }
 }
+
+//Returns an iterator pointing to the first element in the list container.
+template <class T>
+typename LinkedList<T>::iterator LinkedList<T>::begin(){
+    if(head->getNext() != tail)
+        return LinkedList<T>::iterator(head->getNext());
+    else
+        return nullptr;
+    
+}
+
+/*
+Returns an iterator referring to the past-the-end element in the list container.
+The past-the-end element is the theoretical element that would follow the last element in the list container. 
+It does not point to any element, and thus shall not be dereferenced.
+*/
+template <class T>
+typename LinkedList<T>::iterator LinkedList<T>::end(){
+    if(tail->getPrev() != head)
+        return LinkedList<T>::iterator(tail);
+    else
+        return nullptr;
+}
+
+// Iterator class -----------------------------------------------------------
+
+//Constructor
+template <class T>
+LinkedList<T>::iterator::iterator(Node *s){
+    curr = s;
+}
+
+//Overloading the equals operator (==)
+template <class T>
+const bool LinkedList<T>::iterator::operator ==(const iterator& r){
+    return curr == r.curr;
+}
+
+//Overloading the not equal operator (!=)
+template <class T>
+const bool LinkedList<T>::iterator::operator !=(const iterator& r){
+    return curr != r.curr;
+}
+
+//Overloading the dereference operator (*)
+template <class T>
+const T LinkedList<T>::iterator::operator *(){
+    return curr->getData();
+}
+
+template <class T>
+typename LinkedList<T>::iterator& LinkedList<T>::iterator::operator++(){
+    //Goes to the next node
+    if(curr->getNext() != nullptr){
+        curr = curr->getNext();
+    }
+    return *this;
+}

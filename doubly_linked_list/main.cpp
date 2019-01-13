@@ -67,7 +67,9 @@ bool testInt(int num){
         counter++;
     }
 
-
+    cout<<"Printing the reversed list...\n";
+    list.reverse();
+    list.printList();
     cout<<"**************************************************************\n";
     return test;
 }
@@ -121,6 +123,10 @@ bool testDouble(double num){
         cout<<"Node " <<counter <<" = " <<*it <<endl;
         counter++;
     }
+
+    cout<<"Printing the reversed list...\n";
+    list.reverse();
+    list.printList();
     cout<<"**************************************************************\n";
     return test;
 }
@@ -175,6 +181,10 @@ bool testString(string str){
         cout<<"Node " <<counter <<" = " <<*it <<endl;
         counter++;
     }
+
+    cout<<"Printing the reversed list...\n";
+    list.reverse();
+    list.printList();
     cout<<"**************************************************************\n";
     return test;
 }

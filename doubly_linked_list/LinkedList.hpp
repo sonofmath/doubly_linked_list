@@ -18,6 +18,9 @@ class LinkedList {
         void pop_back();
         void clear();
 
+        //Operations
+        void reverse();
+
         //Element access:
         T front();
         T back();

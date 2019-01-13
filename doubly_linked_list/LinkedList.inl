@@ -219,6 +219,7 @@ void LinkedList<T>::pop_front(){
     }
 }
 
+
 template <class T>
 void LinkedList<T>::pop_back(){
     if(!isEmpty()){
@@ -261,6 +262,47 @@ void LinkedList<T>::printList(){
 
 }
 
+//Reverses the order of the elements in the list container.
+template <class T>
+void LinkedList<T>::reverse(){
+    //The first Node which will end up as the last.
+    Node *current = head->getNext();
+
+    //Node that will be pushed to the front of the list.
+    Node *newFirst = current->getNext();
+
+    Node *temp = newFirst->getNext();
+
+    //Attaching current to its new nodes
+    current->setNext(temp);
+    current->setPrev(newFirst);
+    temp->setPrev(current);
+
+    //Attaching the head and the first node.
+    head->setNext(newFirst);
+    newFirst->setPrev(head);
+    newFirst->setNext(current);
+
+    newFirst = current->getNext();
+    temp = newFirst->getNext();
+
+    while(newFirst != tail){
+        //Attaching current to its new nodes
+        current->setNext(temp);
+        temp->setPrev(current);
+
+        //Attaching the head and the new first node.
+        newFirst->setPrev(head);
+        newFirst->setNext(head->getNext());
+        head->getNext()->setPrev(newFirst);
+        head->setNext(newFirst);
+
+        newFirst = current->getNext();
+        temp = newFirst->getNext();
+    }
+
+}
+
 //Destructor
 template <class T>
 LinkedList<T>::~LinkedList() {
@@ -289,12 +331,12 @@ typename LinkedList<T>::iterator LinkedList<T>::begin(){
         return LinkedList<T>::iterator(head->getNext());
     else
         return nullptr;
-    
+
 }
 
 /*
 Returns an iterator referring to the past-the-end element in the list container.
-The past-the-end element is the theoretical element that would follow the last element in the list container. 
+The past-the-end element is the theoretical element that would follow the last element in the list container.
 It does not point to any element, and thus shall not be dereferenced.
 */
 template <class T>

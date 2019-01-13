@@ -272,6 +272,7 @@ void LinkedList<T>::reverse(){
         //Node that will be pushed to the front of the list.
         Node *newFirst = current->getNext();
 
+        //Checks if there is more than 1 node
         if(newFirst != tail) {
             Node *temp = newFirst->getNext();
 
@@ -285,9 +286,12 @@ void LinkedList<T>::reverse(){
             newFirst->setPrev(head);
             newFirst->setNext(current);
 
+            //Resetting the pointers
             newFirst = current->getNext();
             temp = newFirst->getNext();
 
+            // Checks if there are more than 2 nodes.
+            // If so, do not reset the prev on current.
             while(newFirst != tail){
                 //Attaching current to its new nodes
                 current->setNext(temp);
@@ -299,6 +303,7 @@ void LinkedList<T>::reverse(){
                 head->getNext()->setPrev(newFirst);
                 head->setNext(newFirst);
 
+                //Resetting the pointers
                 newFirst = current->getNext();
                 temp = newFirst->getNext();
             }

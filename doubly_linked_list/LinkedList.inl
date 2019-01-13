@@ -265,42 +265,45 @@ void LinkedList<T>::printList(){
 //Reverses the order of the elements in the list container.
 template <class T>
 void LinkedList<T>::reverse(){
-    //The first Node which will end up as the last.
-    Node *current = head->getNext();
+    if(!isEmpty()){
+        //The first Node which will end up as the last.
+        Node *current = head->getNext();
 
-    //Node that will be pushed to the front of the list.
-    Node *newFirst = current->getNext();
+        //Node that will be pushed to the front of the list.
+        Node *newFirst = current->getNext();
 
-    Node *temp = newFirst->getNext();
+        if(newFirst != tail) {
+            Node *temp = newFirst->getNext();
 
-    //Attaching current to its new nodes
-    current->setNext(temp);
-    current->setPrev(newFirst);
-    temp->setPrev(current);
+            //Attaching current to its new nodes
+            current->setNext(temp);
+            current->setPrev(newFirst);
+            temp->setPrev(current);
 
-    //Attaching the head and the first node.
-    head->setNext(newFirst);
-    newFirst->setPrev(head);
-    newFirst->setNext(current);
+            //Attaching the head and the first node.
+            head->setNext(newFirst);
+            newFirst->setPrev(head);
+            newFirst->setNext(current);
 
-    newFirst = current->getNext();
-    temp = newFirst->getNext();
+            newFirst = current->getNext();
+            temp = newFirst->getNext();
 
-    while(newFirst != tail){
-        //Attaching current to its new nodes
-        current->setNext(temp);
-        temp->setPrev(current);
+            while(newFirst != tail){
+                //Attaching current to its new nodes
+                current->setNext(temp);
+                temp->setPrev(current);
 
-        //Attaching the head and the new first node.
-        newFirst->setPrev(head);
-        newFirst->setNext(head->getNext());
-        head->getNext()->setPrev(newFirst);
-        head->setNext(newFirst);
+                //Attaching the head and the new first node.
+                newFirst->setPrev(head);
+                newFirst->setNext(head->getNext());
+                head->getNext()->setPrev(newFirst);
+                head->setNext(newFirst);
 
-        newFirst = current->getNext();
-        temp = newFirst->getNext();
+                newFirst = current->getNext();
+                temp = newFirst->getNext();
+            }
+        }
     }
-
 }
 
 //Destructor

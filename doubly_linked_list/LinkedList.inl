@@ -273,13 +273,22 @@ void LinkedList<T>::remove(T inputData) {
 
         while(current != tail) {
             if(current->data == newNode->data) {
+                Node *delNode = current;
                 current->getNext()->setPrev(current->getPrev());
                 current->getPrev()->setNext(current->getNext());
+
+                //Increment current
+                current = current->getNext();
+
+                //Delete the node
+                delete delNode;
+            } else {
+                //Increment current
+                current = current->getNext();
             }
-            //Increments current
-            current = current->getNext();
         }
     }
+    delete newNode;
 }
 
 //Reverses the order of the elements in the list container.

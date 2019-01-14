@@ -262,6 +262,25 @@ void LinkedList<T>::printList(){
 
 }
 
+//Removes from the container all the elements that compare equal to val.
+//This calls the destructor of these objects and reduces the container size by the number of elements removed.
+template <class T>
+void LinkedList<T>::remove(T inputData) {
+    Node *newNode = new Node(inputData);
+
+    if(!isEmpty()) {
+        Node *current = head->getNext();
+        while(current != tail) {
+            if(current->data == newNode->data) {
+                current->getNext()->setPrev(current->getPrev());
+                current->getPrev()->setNext(current->getNext());
+            }
+            //Increments current
+            current = current->getNext();
+        }
+    }
+}
+
 //Reverses the order of the elements in the list container.
 template <class T>
 void LinkedList<T>::reverse(){

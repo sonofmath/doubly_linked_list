@@ -19,6 +19,7 @@ class LinkedList {
         void clear();
 
         //Operations
+        void remove(T inputData);
         void reverse();
 
         //Element access:

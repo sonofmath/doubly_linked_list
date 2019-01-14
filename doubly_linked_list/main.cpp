@@ -39,7 +39,12 @@ bool testInt(int num){
     cout<<"Popping back...\n";
     list.pop_back();
     cout<<"Number of elements now in list: " <<list.size();
+    list.printList();
 
+    //Testing the remove function
+    cout<< endl <<"Removing 4 and -20 from the list...\n";
+    list.remove(4);
+    list.remove(-20);
     list.printList();
 
     cout<<"Clearing the list...\n";
@@ -99,6 +104,12 @@ bool testDouble(double num){
     cout<<"Number of elements in list: " <<list.size();
     list.printList();
 
+    //Testing the remove function
+    cout<< endl <<"Removing 4.0 and 4.3 from the list...\n";
+    list.remove(4.0);
+    list.remove(4.3);
+    list.printList();
+
     cout<<"Clearing the list...\n";
     list.clear();
     list.printList();
@@ -155,6 +166,12 @@ bool testString(string str){
     cout<<"Popping back...\n";
     list.pop_back();
     cout<<"Number of elements in list: " <<list.size();
+    list.printList();
+
+    //Testing the remove function
+    cout<< endl <<"Removing HELLO and JR from from the list...\n";
+    list.remove("HELLO");
+    list.remove("JR");
     list.printList();
 
     cout<<"Clearing the list...\n";

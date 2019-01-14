@@ -270,6 +270,7 @@ void LinkedList<T>::remove(T inputData) {
 
     if(!isEmpty()) {
         Node *current = head->getNext();
+
         while(current != tail) {
             if(current->data == newNode->data) {
                 current->getNext()->setPrev(current->getPrev());

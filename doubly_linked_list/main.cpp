@@ -72,7 +72,16 @@ bool testInt(int num){
         counter++;
     }
 
-    cout<<"Printing the reversed list...\n";
+    cout<< endl <<"Resizing the list to 5 Nodes...";
+    list.resize(5, 2);
+    list.printList();
+    cout<< endl << "Resizing the list to add 3 Nodes with value of 2...";
+    list.resize(8, 2);
+    list.printList();
+
+
+
+    cout<< endl << "Printing the reversed list...";
     list.reverse();
     list.printList();
     cout<<"**************************************************************\n";
@@ -135,7 +144,14 @@ bool testDouble(double num){
         counter++;
     }
 
-    cout<<"Printing the reversed list...\n";
+    cout<< endl << "Resizing the list to 5 Nodes...";
+    list.resize(5, 2.3);
+    list.printList();
+    cout<< endl << "Resizing the list to add 3 Nodes with value of 2.3...";
+    list.resize(8, 2.3);
+    list.printList();
+
+    cout<< endl <<"Printing the reversed list...";
     list.reverse();
     list.printList();
     cout<<"**************************************************************\n";
@@ -199,7 +215,14 @@ bool testString(string str){
         counter++;
     }
 
-    cout<<"Printing the reversed list...\n";
+    cout<< endl << "Resizing the list to 5 Nodes...";
+    list.resize(5, "Hello Ray!");
+    list.printList();
+    cout<< endl << "Resizing the list to add 3 Nodes with value of Hello Ray...";
+    list.resize(8, "Hello Ray!");
+    list.printList();
+
+    cout<< endl << "Printing the reversed list...";
     list.reverse();
     list.printList();
     cout<<"**************************************************************\n";

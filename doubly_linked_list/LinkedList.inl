@@ -262,6 +262,48 @@ void LinkedList<T>::printList(){
 
 }
 
+template <class T>
+void LinkedList<T>::resize(int n, T newData) {
+    int count = 0;
+
+    if(!isEmpty()) {
+        Node *current = head->getNext();
+        while(current != tail) {
+            //Increment the counter
+            count++;
+
+            //Increment current
+            current = current->getNext();
+        }
+
+        if(count > n) {
+            current = current->getPrev();
+            while(count > n) {
+                Node *temp = current;
+                current->getPrev()->setNext(tail);
+                tail->setPrev(current->getPrev());
+                current = current->getPrev();
+                delete temp;
+                count--;
+            }
+        }
+        else if(count < n) {
+            current = current->getPrev();
+            while(count < n) {
+                Node *newNode = new Node(newData);
+                newNode->setPrev(current);
+                newNode->setNext(tail);
+
+                current->setNext(newNode);
+                tail->setPrev(newNode);
+
+                current = newNode;
+                count++;
+            }
+        }
+    }
+}
+
 //Removes from the container all the elements that compare equal to val.
 //This calls the destructor of these objects and reduces the container size by the number of elements removed.
 template <class T>

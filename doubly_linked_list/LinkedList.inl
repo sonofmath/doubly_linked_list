@@ -146,8 +146,14 @@ const T LinkedList<T>::Node::getData(){
 template <class T>
 LinkedList<T>::Node::~Node() {}
 
+//Empty container constructor (default constructor)
 template <class T>
 LinkedList<T>::LinkedList() {
+    init();
+}
+
+template <class T>
+void LinkedList<T>::init(){
     //T{} is default value initialization
     head = new Node(nullptr, nullptr, T{});
     tail = new Node(nullptr,nullptr, T{});
@@ -159,7 +165,17 @@ LinkedList<T>::LinkedList() {
     //Tail node setup
     tail->prev = head;
     tail->next = nullptr;   //End of list
+}
 
+//Constructs a container with n elements. Each element is a copy of val.
+template <class T>
+LinkedList<T>::LinkedList(int n, T val){
+    init();
+
+    //Push elements with the same data...
+    for(int i = 1; i <= n; ++i){
+        this->push_back(val);
+    }
 }
 
 //Checks if the list is empty

@@ -232,14 +232,11 @@ bool testString(string str){
 }
 
 bool testSwap(){
+    cout<<"**************************************************************\n";
+    cout<<"Testing swap function: \n";
     bool test = false;
-    LinkedList<int> list1;
-    list1.push_back(1);
-    list1.push_back(1);
-    LinkedList<int> list2;
-    list2.push_back(2);
-    list2.push_back(2);
-    list2.push_back(2);
+    LinkedList<int> list1(5,50);
+    LinkedList<int> list2(3,30);
 
     cout<<"list1:";
     list1.printList();
@@ -256,5 +253,6 @@ bool testSwap(){
     cout<<"list2:";
     list2.printList();
 
+    cout<<"**************************************************************\n";
     return test;
 }

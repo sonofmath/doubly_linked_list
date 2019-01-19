@@ -18,6 +18,7 @@ class LinkedList {
         void pop_back();
         void resize(int n, T newData);
         void clear();
+        void swap(LinkedList<T>& obj);
 
         //Operations
         void remove(T inputData);

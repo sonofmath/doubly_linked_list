@@ -5,12 +5,14 @@ using namespace std;
 bool testInt(int num);
 bool testDouble(double num);
 bool testString(string str);
+bool testSwap();
 
 int main()
 {
     cout<<testInt(5) <<endl;
     cout<<testDouble(5.5) <<endl;
     cout<<testString("Hello!") <<endl;
+    cout<<testSwap() <<endl;
     return 0;
 }
 
@@ -226,5 +228,33 @@ bool testString(string str){
     list.reverse();
     list.printList();
     cout<<"**************************************************************\n";
+    return test;
+}
+
+bool testSwap(){
+    bool test = false;
+    LinkedList<int> list1;
+    list1.push_back(1);
+    list1.push_back(1);
+    LinkedList<int> list2;
+    list2.push_back(2);
+    list2.push_back(2);
+    list2.push_back(2);
+
+    cout<<"list1:";
+    list1.printList();
+
+    cout<<"list2:";
+    list2.printList();
+
+    cout<<"Swapping Lists: \n";
+    list1.swap(list2);
+
+    cout<<"list1:";
+    list1.printList();
+
+    cout<<"list2:";
+    list2.printList();
+
     return test;
 }

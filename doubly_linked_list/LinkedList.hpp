@@ -21,6 +21,7 @@ class LinkedList {
 
         //Operations
         void remove(T inputData);
+        void unique();
         void reverse();
 
         //Element access:

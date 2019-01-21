@@ -268,6 +268,8 @@ void LinkedList<T>::resize(int n, T newData) {
 
     if(!isEmpty()) {
         Node *current = head->getNext();
+
+        //Get a count of nodes in the list
         while(current != tail) {
             //Increment the counter
             count++;
@@ -276,6 +278,7 @@ void LinkedList<T>::resize(int n, T newData) {
             current = current->getNext();
         }
 
+        //Checks to see if there are more nodes than the new resized value
         if(count > n) {
             current = current->getPrev();
             while(count > n) {
@@ -287,6 +290,7 @@ void LinkedList<T>::resize(int n, T newData) {
                 count--;
             }
         }
+        //Checks to see if there are less nodes than the new resized value
         else if(count < n) {
             current = current->getPrev();
             while(count < n) {
@@ -299,6 +303,37 @@ void LinkedList<T>::resize(int n, T newData) {
 
                 current = newNode;
                 count++;
+            }
+        }
+    }
+}
+
+template <class T>
+void LinkedList<T>::unique() {
+    if(!isEmpty()) {
+        Node *current = tail->getPrev();
+        Node *temp = NULL;
+
+        while(current != head) {
+            bool solo = true;
+            //val->data = current->data;
+            temp = head->getNext();
+            while(temp != current) {
+                if(current->data == temp->data) {
+                    solo = false;
+                    Node *delNode = current;
+                    current = current->getPrev();
+
+                    current->setNext(delNode->getNext());
+                    delNode->getNext()->setPrev(current);
+
+                    delete delNode;
+                } else {
+                    temp = temp->getNext();
+                }
+            }
+            if (solo) {
+                current = current->getPrev();
             }
         }
     }

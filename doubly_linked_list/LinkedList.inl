@@ -46,6 +46,43 @@ const int LinkedList<T>::size() const{
 }
 
 /*
+Exchanges the content of the container by the content of x, which is another list of the same type.
+Sizes may differ.
+*/
+template <class T>
+void LinkedList<T>::swap(LinkedList<T>& obj){
+    //Set up ptr to first & last nodes in this object's list
+    Node *firstNode = head->getNext();
+    Node *lastNode = tail->getPrev();
+
+    //Set up ptr to first & last nodes in obj list
+    Node *firstNodeObj = obj.head->getNext();
+    Node *lastNodeObj = obj.tail->getPrev();
+
+    //Swap the heads & set the links (this object 1st):
+    Node *temp = head;
+    head = obj.head;
+    head->setNext(firstNodeObj);
+    firstNodeObj->setPrev(head);
+
+    //Now other object (obj)
+    obj.head = temp;
+    obj.head->setNext(firstNode);
+    firstNode->setPrev(obj.head);
+
+    //Swap the tails & set links (this object 1st):
+    temp = tail;
+    tail = obj.tail;
+    tail->setPrev(lastNodeObj);
+    lastNodeObj->setPrev(obj.tail);
+
+    //Now other object (obj)
+    obj.tail = temp;
+    obj.tail->setPrev(lastNode);
+    lastNode->setNext(obj.tail);
+}
+
+/*
 Removes all elements from the list container (which are destroyed),
  and leaving the container with a size of 0.
 */
@@ -109,8 +146,14 @@ const T LinkedList<T>::Node::getData(){
 template <class T>
 LinkedList<T>::Node::~Node() {}
 
+//Empty container constructor (default constructor)
 template <class T>
 LinkedList<T>::LinkedList() {
+    init();
+}
+
+template <class T>
+void LinkedList<T>::init(){
     //T{} is default value initialization
     head = new Node(nullptr, nullptr, T{});
     tail = new Node(nullptr,nullptr, T{});
@@ -122,7 +165,17 @@ LinkedList<T>::LinkedList() {
     //Tail node setup
     tail->prev = head;
     tail->next = nullptr;   //End of list
+}
 
+//Constructs a container with n elements. Each element is a copy of val.
+template <class T>
+LinkedList<T>::LinkedList(int n, T val){
+    init();
+
+    //Push elements with the same data...
+    for(int i = 1; i <= n; ++i){
+        this->push_back(val);
+    }
 }
 
 //Checks if the list is empty

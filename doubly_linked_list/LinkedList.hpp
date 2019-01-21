@@ -7,8 +7,9 @@ template <class T>
 class LinkedList {
 
     public:
-        //Constructor:
+        //Constructors:
         LinkedList();
+        LinkedList(int n, T val);
 
         //Modifiers:
         void push_back(T newData);
@@ -18,6 +19,7 @@ class LinkedList {
         void pop_back();
         void resize(int n, T newData);
         void clear();
+        void swap(LinkedList<T>& obj);
 
         //Operations
         void remove(T inputData);
@@ -84,11 +86,12 @@ class LinkedList {
         Node* tail;
 
         const bool isEmpty() const;
+        void init();
 };
 
 /* For separate header and source file source code
 	Template classes & functions declarations and implementations
-	should be in the "same file". BST.inl allows us to separate
+	should be in the "same file". The inl allows us to separate
 	these two.
 	*/
 #include "LinkedList.inl"

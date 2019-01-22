@@ -85,11 +85,13 @@ bool testInt(int num){
     }
 
     cout<< endl <<"Resizing the list to 5 Nodes...";
-    list.resize(5, 2);
+    list.resize(5);
     list.printList();
     cout<< endl << "Resizing the list to add 3 Nodes with value of 2...";
     list.resize(8, 2);
+    list.resize(10);
     list.printList();
+
 
 
 

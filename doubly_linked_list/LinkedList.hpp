@@ -17,6 +17,7 @@ class LinkedList {
         void printList();
         void pop_front();
         void pop_back();
+        void resize(int n);
         void resize(int n, T newData);
         void clear();
         void swap(LinkedList<T>& obj);

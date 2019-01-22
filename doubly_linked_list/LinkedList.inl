@@ -316,6 +316,52 @@ void LinkedList<T>::printList(){
 }
 
 template <class T>
+void LinkedList<T>::resize(int n) {
+    int count = 0;
+
+    if(!isEmpty()) {
+        Node *current = head->getNext();
+
+        //Get a count of nodes in the list
+        while(current != tail) {
+            //Increment the counter
+            count++;
+
+            //Increment current
+            current = current->getNext();
+        }
+
+        //Checks to see if there are more nodes than the new resized value
+        if(count > n) {
+            current = current->getPrev();
+            while(count > n) {
+                Node *temp = current;
+                current->getPrev()->setNext(tail);
+                tail->setPrev(current->getPrev());
+                current = current->getPrev();
+                delete temp;
+                count--;
+            }
+        }
+        //Checks to see if there are less nodes than the new resized value
+        else if(count < n) {
+            current = current->getPrev();
+            while(count < n) {
+                Node *newNode = new Node(0);
+                newNode->setPrev(current);
+                newNode->setNext(tail);
+
+                current->setNext(newNode);
+                tail->setPrev(newNode);
+
+                current = newNode;
+                count++;
+            }
+        }
+    }
+}
+
+template <class T>
 void LinkedList<T>::resize(int n, T newData) {
     int count = 0;
 

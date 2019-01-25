@@ -6,6 +6,7 @@ bool testInt(int num);
 bool testDouble(double num);
 bool testString(string str);
 bool testSwap();
+bool testReverseIter();
 
 int main()
 {
@@ -13,6 +14,7 @@ int main()
     cout<<testDouble(5.5) <<endl;
     cout<<testString("Hello!") <<endl;
     cout<<testSwap() <<endl;
+    cout<<testReverseIter() <<endl;
     return 0;
 }
 
@@ -278,6 +280,32 @@ bool testSwap(){
 
     cout<<"list2:";
     list2.printList();
+
+    cout<<"**************************************************************\n";
+    return test;
+}
+
+bool testReverseIter(){
+    bool test = false;
+    cout<<"**************************************************************\n";
+    cout<<"Testing reverse iterator: \n";
+    LinkedList<double> list;
+    list.push_back(1.1);
+    list.push_back(2.2);
+    list.push_back(3.3);
+    list.push_back(4.4);
+    list.push_back(5.5);
+    list.push_back(6.6);
+    list.push_back(7.7);
+    list.push_back(8.8);
+    list.push_back(9.9);
+
+    int counter = 1;
+    for(auto it = list.rbegin(); it != list.rend(); ++it)
+    {
+        cout<<"Node " <<counter <<" = " <<*it <<endl;
+        counter++;
+    }
 
     cout<<"**************************************************************\n";
     return test;

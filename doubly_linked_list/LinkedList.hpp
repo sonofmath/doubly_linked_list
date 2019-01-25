@@ -39,8 +39,7 @@ class LinkedList {
         ~LinkedList();
 
         // Declaration of the iterator class for this list
-		class iterator
-		{
+		class iterator{
 			public:
 				iterator(typename LinkedList<T>::Node *s);
 				iterator& operator++();
@@ -54,6 +53,22 @@ class LinkedList {
 
         iterator begin();
 		iterator end();
+
+        // Declaration of the reverse iterator class for this list
+        class reverse_iterator{
+            public:
+				reverse_iterator(typename LinkedList<T>::Node *s);
+				reverse_iterator& operator++();
+				const T operator*();
+				const bool operator ==(const reverse_iterator& r);
+				const bool operator !=(const reverse_iterator& r);
+
+			private:
+				typename LinkedList<T>::Node *curr;
+        };
+
+        reverse_iterator rbegin();
+        reverse_iterator rend();
 
     private:
         class Node {
@@ -92,7 +107,7 @@ class LinkedList {
 
 /* For separate header and source file source code
 	Template classes & functions declarations and implementations
-	should be in the "same file". The inl allows us to separate
+	should be in the "same file". The inl file allows us to separate
 	these two.
 	*/
 #include "LinkedList.inl"

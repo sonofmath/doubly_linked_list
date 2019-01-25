@@ -560,6 +560,31 @@ typename LinkedList<T>::iterator LinkedList<T>::end(){
         return nullptr;
 }
 
+/*
+Returns a reverse iterator pointing to the last element in the container (i.e., its reverse beginning).
+Reverse iterators iterate backwards: increasing them moves them towards the beginning of the container.
+*/
+template <class T>
+typename LinkedList<T>::reverse_iterator LinkedList<T>::rbegin(){
+    if(tail->getPrev() != head)
+        return LinkedList<T>::reverse_iterator(tail->getPrev());
+    else
+        return nullptr;
+}
+
+/*
+Returns a reverse iterator pointing to the theoretical element preceding the first
+element in the list container (which is considered its reverse end).
+*/
+template <class T>
+typename LinkedList<T>::reverse_iterator LinkedList<T>::rend(){
+    if(head->getNext() != tail)
+        return LinkedList<T>::reverse_iterator(head);
+    else
+        return nullptr;
+
+}
+
 // Iterator class -----------------------------------------------------------
 
 //Constructor
@@ -586,11 +611,48 @@ const T LinkedList<T>::iterator::operator *(){
     return curr->getData();
 }
 
+//Overloading the increment operator (++)
 template <class T>
 typename LinkedList<T>::iterator& LinkedList<T>::iterator::operator++(){
     //Goes to the next node
     if(curr->getNext() != nullptr){
         curr = curr->getNext();
+    }
+    return *this;
+}
+
+// Reverse Iterator class -----------------------------------------------------------
+
+//Constructor
+template<class T>
+LinkedList<T>::reverse_iterator::reverse_iterator(typename LinkedList<T>::Node *s){
+    curr = s;
+}
+
+//Overloading the equals operator (==)
+template <class T>
+const bool LinkedList<T>::reverse_iterator::operator ==(const reverse_iterator& r){
+    return curr == r.curr;
+}
+
+//Overloading the not equal operator (!=)
+template <class T>
+const bool LinkedList<T>::reverse_iterator::operator !=(const reverse_iterator& r){
+    return curr != r.curr;
+}
+
+//Overloading the dereference operator (*)
+template <class T>
+const T LinkedList<T>::reverse_iterator::operator *(){
+    return curr->getData();
+}
+
+//Overloading the increment operator (++)
+template <class T>
+typename LinkedList<T>::reverse_iterator& LinkedList<T>::reverse_iterator::operator++(){
+    //Goes to the next node
+    if(curr->getPrev() != nullptr){
+        curr = curr->getPrev();
     }
     return *this;
 }

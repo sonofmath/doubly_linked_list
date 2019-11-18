@@ -7,4 +7,3 @@
 <img src="/CreateNode.png">
 <img src="/InsertNode.png">
 
-# Fun Stuff
